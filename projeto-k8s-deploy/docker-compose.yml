@@ -11,7 +11,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
       DB_NAME: mensagensdb
-      API_HOST: 0.0.0.0
+      API_HOST: 0.0.0.0 #mudar o ip para o ip do container
       API_PORT: 5000
     depends_on:
       - db
@@ -24,7 +24,7 @@ services:
     ports:
       - "3000:80"
     environment:
-      - VITE_API_URL=http://backend:5000
+      - VITE_API_URL=http://backend:5000 # URL do backend 
     depends_on:
       - backend
     networks:
