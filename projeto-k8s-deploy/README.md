@@ -2,7 +2,7 @@
 
 ## 👥 Integrantes da Equipe
 - Amanda Laryssa Rodrigues de Mattos
--
+- José Wilquer Nascimento de Lima
 ## 🎯 Objetivo do Projeto
 
 Realizar o deploy completo de uma aplicação fullstack em um cluster Kubernetes, composta por:
