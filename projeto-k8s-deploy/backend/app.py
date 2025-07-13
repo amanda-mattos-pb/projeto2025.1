@@ -36,6 +36,6 @@ def adicionar_mensagem():
     return jsonify({'id': nova.id, 'texto': nova.texto}), 201
 
 if __name__ == '__main__':
-    FLASK_HOST = os.getenv('API_HOST', '0.0.0.0')
-    FLASK_PORT = int(os.getenv('API_PORT', '5000'))
+    FLASK_HOST = os.getenv('API_HOST', '0.0.0.0')#ver o que seria esse ip
+    FLASK_PORT = int(os.getenv('API_PORT', '5000'))#verqual seria a porta
     app.run(host=FLASK_HOST, port=FLASK_PORT)
