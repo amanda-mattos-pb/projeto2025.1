@@ -1,14 +1,156 @@
 <!-- eu tenho que alterar varias coisas aqui mas acho que dar pra resolver-->
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
+
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Docker e Kubernetes</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      nav{
+        background-color: #24292e;
+        color: white;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      nav h1' {
+        margin: 0;
+        fontsize: 1.5rem;
+      }
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 15px;
+        display: flex;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      .container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: white;
+    }
+
+    h2 {
+      color: #333;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    .cheat-sheet table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .cheat-sheet th, .cheat-sheet td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .login {
+      background-color: #eee;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .login input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    .login button {
+      background-color: #24292e;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      margin-top: 40px;
+      background-color: #ddd;
+    }
+      
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <nav>
+      <h1>Docker e Kubernetes</h1>
+      <ul>
+        <li><a href="#docker">Docker</a></li>
+        <li><a href="#kubernetes">Kubernetes</a></li>
+        <li><a href="#login">Login</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <section id="docker">
+        <h2>Docker</h2>
+        <p>Docker é uma plataforma que permite criar, implantar e executar aplicativos em contêineres.</p>
+        <div class="cheat-sheet">
+          <h3>Comandos Básicos do Docker</h3>
+          <table>
+            <tr>
+              <th>Comando</th>
+              <th>Descrição</th>
+            </tr>
+            <tr>
+              <td><code>docker run</code></td>
+              <td>Executa um contêiner a partir de uma imagem.</td>
+            </tr>
+            <tr>
+              <td><code>docker ps</code></td>
+              <td>Lista os contêineres em execução.</td>
+            </tr>
+            <!-- Adicione mais comandos conforme necessário -->
+          </table>
+        </div>
+      </section>
+
+      <section id="kubernetes">
+        <h2>Kubernetes</h2>
+        <p>Kubernetes é um sistema de orquestração de contêineres para automatizar a implantação, o dimensionamento e a operação de aplicativos em contêineres.</p>
+        <div class="cheat-sheet">
+          <h3>Comandos Básicos do Kubernetes</h3>
+          <table>
+            <tr>
+              <th>Comando</th>
+              <th>Descrição</th>
+            </tr>
+            <tr>
+              <td><code>kubectl get pods</code></td>
+              <td>Lista os pods em execução.</td>
+            </tr>
+            <!-- Adicione mais comandos conforme necessário -->
+          </table>
+        </div>
+      </section>
+
+      <section id="login" class="login">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+          <input type="text" name="username" placeholder="Usuário" required />
+          <input type="password" name="password
+
   </body>
 </html>
