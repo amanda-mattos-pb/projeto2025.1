@@ -1,5 +1,3 @@
-# Fase de build
-#seria esse a imagem?
 
 FROM node:20 as build
 

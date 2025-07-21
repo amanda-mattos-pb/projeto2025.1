@@ -35,6 +35,10 @@ def adicionar_mensagem():
     db.session.commit()
     return jsonify({'id': nova.id, 'texto': nova.texto}), 201
 
+#@app.route("/health")
+#def health():
+#    return "OK", 200
+
 if __name__ == '__main__':
     FLASK_HOST = os.getenv('API_HOST', '0.0.0.0')#ver o que seria esse ip
     FLASK_PORT = int(os.getenv('API_PORT', '5000'))#verqual seria a porta
