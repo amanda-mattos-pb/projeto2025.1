@@ -1,112 +1,303 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Docker e Kubernetes</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 20px;
-      }
-      nav{
-        background-color: #24292e;
-        color: white;
-        padding: 10px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      nav h1{
-        margin: 0;
-        fontsize: 1.5rem;
-      }
-      nav ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        gap: 15px;
-        display: flex;
-      }
-      nav ul li a {
-        color: white;
-        text-decoration: none;
-      }
-      .container {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-      background-color: white;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker e Kubernetes - Referência Completa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-
-    h2 {
+    
+    :root {
+      --primary: #2496ed;
+      --secondary: #326ce5;
+      --dark: #1d2b4f;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --success: #28a745;
+      --warning: #ffc107;
+      --danger: #dc3545;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #333;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 40px;
     }
-
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      background: rgba(13, 25, 41, 0.95);
+      color: white;
+      padding: 20px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .logo i {
+      font-size: 2.2rem;
+      color: var(--primary);
+    }
+    
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), #3ae);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    
+    nav a {
+      color: #e0e0ff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover, nav a:focus {
+      background: rgba(36, 150, 237, 0.2);
+      color: white;
+    }
+    
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 0;
+      color: white;
+    }
+    
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #fff, #a0d2ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: #e0f0ff;
+    }
+    
+    .tech-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .tech-icon {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .tech-icon:hover {
+      transform: translateY(-10px);
+    }
+    
+    .docker-icon {
+      color: #2496ed;
+    }
+    
+    .k8s-icon {
+      color: #326ce5;
+    }
+    
+    /* Main Content */
+    .content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .section {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      transition: transform 0.3s ease;
+    }
+    
+    .section:hover {
+      transform: translateY(-5px);
+    }
+    
+    .section h2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--dark);
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid var(--primary);
+    }
+    
+    .section h2 i {
+      color: var(--primary);
+    }
+    
+    .section p {
+      margin-bottom: 25px;
+      color: var(--dark);
+      font-size: 1.1rem;
+    }
+    
+    /* Table Styles */
     .cheat-sheet table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
+      margin-top: 15px;
     }
-
-    .cheat-sheet th, .cheat-sheet td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-
-    .login {
-      background-color: #eee;
-      padding: 20px;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-
-    .login input {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      box-sizing: border-box;
-    }
-
-    .login button {
-      background-color: #24292e;
+    
+    .cheat-sheet th {
+      background: var(--dark);
       color: white;
-      padding: 10px;
-      width: 100%;
-      border: none;
-      cursor: pointer;
+      text-align: left;
+      padding: 15px;
+      font-weight: 600;
     }
-
+    
+    .cheat-sheet td {
+      padding: 15px;
+      border-bottom: 1px solid #e0e0e0;
+      color: #444;
+    }
+    
+    .cheat-sheet tr:nth-child(even) {
+      background: #f8f9ff;
+    }
+    
+    .cheat-sheet tr:hover {
+      background: #edf5ff;
+    }
+    
+    .cheat-sheet code {
+      background: #eef5ff;
+      color: var(--primary);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+    }
+    
+    /* Footer */
     footer {
       text-align: center;
-      padding: 10px;
-      margin-top: 40px;
-      background-color: #ddd;
+      margin-top: 50px;
+      color: rgba(255, 255, 255, 0.7);
+      padding: 20px;
+      font-size: 0.9rem;
     }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <h1>Docker e Kubernetes</h1>
-      <ul>
-        <li><a href="#docker">Docker</a></li>
-        <li><a href="#kubernetes">Kubernetes</a></li>
-        <li><a href="#login">Login</a></li>
-      </ul>
-    </nav>
-
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .content {
+        grid-template-columns: 1fr;
+      }
+      
+      .tech-icons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      nav ul {
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
     <div class="container">
-      <section id="docker">
-        <h2>Docker</h2>
-        <p>Docker é uma plataforma que permite criar, implantar e executar aplicativos em contêineres.</p>
+      <div class="header-content">
+        <div class="logo">
+          <i class="fab fa-docker"></i>
+          <h1>Docker & Kubernetes</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#docker"><i class="fab fa-docker"></i> Docker</a></li>
+            <li><a href="#kubernetes"><i class="fas fa-cubes"></i> Kubernetes</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="hero">
+      <h2>Comandos Essenciais para Containerização</h2>
+      <p>Referência completa dos comandos mais úteis para gerenciar containers com Docker e orquestrar aplicações com Kubernetes.</p>
+      
+      <div class="tech-icons">
+        <div class="tech-icon docker-icon">
+          <i class="fab fa-docker"></i>
+        </div>
+        <div class="tech-icon k8s-icon">
+          <i class="fas fa-cubes"></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="content">
+      <section id="docker" class="section">
+        <h2><i class="fab fa-docker"></i> Docker</h2>
+        <p>Docker é uma plataforma que permite criar, implantar e executar aplicativos em contêineres, oferecendo isolamento e portabilidade.</p>
+        
         <div class="cheat-sheet">
           <h3>Comandos Básicos do Docker</h3>
           <table>
@@ -115,21 +306,57 @@
               <th>Descrição</th>
             </tr>
             <tr>
-              <td><code>docker run</code></td>
-              <td>Executa um contêiner a partir de uma imagem.</td>
+              <td><code>docker run [imagem]</code></td>
+              <td>Executa um contêiner a partir de uma imagem</td>
             </tr>
             <tr>
               <td><code>docker ps</code></td>
-              <td>Lista os contêineres em execução.</td>
+              <td>Lista os contêineres em execução</td>
             </tr>
-            <!-- Adicione mais comandos conforme necessário -->
+            <tr>
+              <td><code>docker ps -a</code></td>
+              <td>Lista todos os contêineres (incluindo parados)</td>
+            </tr>
+            <tr>
+              <td><code>docker stop [contêiner]</code></td>
+              <td>Para um contêiner em execução</td>
+            </tr>
+            <tr>
+              <td><code>docker rm [contêiner]</code></td>
+              <td>Remove um contêiner parado</td>
+            </tr>
+            <tr>
+              <td><code>docker images</code></td>
+              <td>Lista as imagens disponíveis</td>
+            </tr>
+            <tr>
+              <td><code>docker rmi [imagem]</code></td>
+              <td>Remove uma imagem</td>
+            </tr>
+            <tr>
+              <td><code>docker pull [imagem]</code></td>
+              <td>Baixa uma imagem do Docker Hub</td>
+            </tr>
+            <tr>
+              <td><code>docker build -t [tag] .</code></td>
+              <td>Constrói uma imagem a partir de um Dockerfile</td>
+            </tr>
+            <tr>
+              <td><code>docker logs [contêiner]</code></td>
+              <td>Mostra os logs de um contêiner</td>
+            </tr>
+            <tr>
+              <td><code>docker exec -it [contêiner] bash</code></td>
+              <td>Acessa um contêiner em execução</td>
+            </tr>
           </table>
         </div>
       </section>
 
-      <section id="kubernates">
-        <h2>Kubernetes</h2>
-        <p>Kubernetes é um sistema de orquestração de contêineres para automatizar a implantação, o dimensionamento e a operação de aplicativos em contêineres.</p>
+      <section id="kubernetes" class="section">
+        <h2><i class="fas fa-cubes"></i> Kubernetes</h2>
+        <p>Kubernetes é um sistema de orquestração de contêineres para automatizar a implantação, o dimensionamento e a operação de aplicativos.</p>
+        
         <div class="cheat-sheet">
           <h3>Comandos Básicos do Kubernetes</h3>
           <table>
@@ -139,18 +366,59 @@
             </tr>
             <tr>
               <td><code>kubectl get pods</code></td>
-              <td>Lista os pods em execução.</td>
+              <td>Lista os pods em execução</td>
             </tr>
-            <!-- Adicione mais comandos conforme necessário -->
+            <tr>
+              <td><code>kubectl get deployments</code></td>
+              <td>Lista as implantações</td>
+            </tr>
+            <tr>
+              <td><code>kubectl get services</code></td>
+              <td>Lista os serviços</td>
+            </tr>
+            <tr>
+              <td><code>kubectl describe pod [pod]</code></td>
+              <td>Mostra detalhes de um pod específico</td>
+            </tr>
+            <tr>
+              <td><code>kubectl apply -f [arquivo.yaml]</code></td>
+              <td>Aplica uma configuração de um arquivo YAML</td>
+            </tr>
+            <tr>
+              <td><code>kubectl delete pod [pod]</code></td>
+              <td>Exclui um pod</td>
+            </tr>
+            <tr>
+              <td><code>kubectl logs [pod]</code></td>
+              <td>Mostra os logs de um pod</td>
+            </tr>
+            <tr>
+              <td><code>kubectl exec -it [pod] -- bash</code></td>
+              <td>Acessa um pod em execução</td>
+            </tr>
+            <tr>
+              <td><code>kubectl scale deploy [deploy] --replicas=[n]</code></td>
+              <td>Dimensiona uma implantação</td>
+            </tr>
+            <tr>
+              <td><code>kubectl config get-contexts</code></td>
+              <td>Lista os contextos disponíveis</td>
+            </tr>
+            <tr>
+              <td><code>kubectl create namespace [nome]</code></td>
+              <td>Cria um novo namespace</td>
+            </tr>
           </table>
         </div>
       </section>
+    </div>
+  </div>
 
-      <section id="login" class="login">
-        <h2>Login</h2>
-        <form action="/login" method="post">
-          <input type="text" name="username" placeholder="Usuário" required />
-          <input type="password" name="password
-
-  </body>
+  <footer>
+    <div class="container">
+      <p>© 2023 Docker & Kubernetes Reference Guide | Desenvolvido para desenvolvedores e DevOps</p>
+      <p>Comandos atualizados para as versões mais recentes</p>
+    </div>
+  </footer>
+</body>
 </html>
